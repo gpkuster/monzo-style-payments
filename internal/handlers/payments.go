@@ -3,19 +3,25 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/gpkuster/monzo-style-payments/internal/service"
 )
+
+var paymentService = service.NewPaymentService()
 
 type CreatePaymentRequest struct {
 	Amount   int64  `json:"amount"`
 	Currency string `json:"currency"`
 }
 
-type CreatePaymentResponse struct {
-	ID     string `json:"id"`
-	Status string `json:"status"`
-}
-
 func CreatePayment(w http.ResponseWriter, r *http.Request) {
+
+	idempotencyKey := r.Header.Get("Idempotency-Key")
+
+	if idempotencyKey == "" {
+		http.Error(w, "missing Idempotency-Key header", http.StatusBadRequest)
+		return
+	}
 
 	var req CreatePaymentRequest
 
@@ -25,10 +31,11 @@ func CreatePayment(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resp := CreatePaymentResponse{
-		ID:     "payment_123",
-		Status: "created",
-	}
+	payment := paymentService.CreatePayment(
+		idempotencyKey,
+		req.Amount,
+		req.Currency,
+	)
 
-	json.NewEncoder(w).Encode(resp)
+	json.NewEncoder(w).Encode(payment)
 }
