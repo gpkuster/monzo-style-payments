@@ -17,7 +17,7 @@ The goal of this project is to explore how modern payment systems are built usin
 - Service-to-service using HTTP API call (ledger_client.go)
 - 
 ## Planned features
-- Service-to-service communication using [Typhon](https://github.com/monzo/typhon)
+- Service-to-service communication using [Typhon (A Monzo Bank framework for RPC)](https://github.com/monzo/typhon) 
 - PostgreSQL persistence
 
 ## Run the service
