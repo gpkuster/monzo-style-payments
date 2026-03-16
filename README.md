@@ -1,4 +1,4 @@
-# monzo-style-payments
+# banking-style-payments
 
 A simplified payments backend written in Go, inspired by the architecture used by fintech companies like Monzo and Stripe.
 
