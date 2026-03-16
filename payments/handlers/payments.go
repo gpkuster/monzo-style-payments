@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/gpkuster/monzo-style-payments/internal/service"
+	"github.com/gpkuster/monzo-style-payments/payments/service"
 )
 
 var paymentService = service.NewPaymentService()

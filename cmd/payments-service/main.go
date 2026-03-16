@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gpkuster/monzo-style-payments/internal/handlers"
+	"github.com/gpkuster/monzo-style-payments/payments/handlers"
 )
 
 func main() {
