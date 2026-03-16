@@ -9,7 +9,9 @@ import (
 
 func main() {
 
-	http.HandleFunc("/transactions", handlers.CreateTransaction)
+	http.HandleFunc("POST /transactions", handlers.CreateTransaction)
+	http.HandleFunc("GET /transactions", handlers.GetAllTransactions)
+	http.HandleFunc("GET /transactions/{id}", handlers.GetTransaction)
 
 	log.Println("ledger-service running on :8081")
 

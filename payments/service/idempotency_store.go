@@ -2,7 +2,7 @@ package service
 
 import "sync"
 
-// IdempotencyStore uses array for MVP
+// IdempotencyStore uses an array for MVP
 type IdempotencyStore struct {
 	data map[string]Payment
 	mu   sync.Mutex // thread safety
