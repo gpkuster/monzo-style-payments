@@ -13,19 +13,25 @@ The goal of this project is to explore how modern payment systems are built usin
 - `/transactions` endpoint
 - Project structure for services and handlers
 - Ledger service with double-entry accounting
-
+- Docker setup
+- Service-to-service using HTTP API call (ledger_client.go)
+- 
 ## Planned features
 - Service-to-service communication using [Typhon](https://github.com/monzo/typhon)
 - PostgreSQL persistence
-- Docker setup
-- 
 
 ## Run the service
-### Payments service
+### Using docker
+```bash
+docker compose up --build
+```
+
+### Using Go in the terminal
+Run the payments service
 ```bash
 go run ./cmd/payments-service
 ```
-### Ledger service
+Run the ledger service
 ```bash
 go run ./cmd/ledger-service
 ```
